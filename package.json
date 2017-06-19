@@ -1,0 +1,25 @@
+{
+  "name": "try-node",
+  "version": "1.0.0",
+  "description": "Yunpeng's first attempt on building a web application with node.js",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "make test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Beckid/TryNode.git"
+  },
+  "keywords": [
+    "node.js"
+  ],
+  "author": "Niu Yunpeng",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Beckid/TryNode/issues"
+  },
+  "homepage": "https://github.com/Beckid/TryNode#readme"
+}
