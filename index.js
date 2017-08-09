@@ -1,6 +1,13 @@
 // Require our own defined 'server' module.
 var server = require('./server');
-// Reuqire our own defined 'router' module.
+// Require our own defined 'router' module.
 var router = require('./router');
+// Require our own defined 'requestHandlers' module.
+var handlers = require('./requestHandlers');
 
-server.start(router.route);
+var handle = {}
+handle['/'] = handlers.start;
+handle['/start'] = handlers.start;
+handle['/upload'] = handlers.upload;
+
+server.start(router.route, handle);
