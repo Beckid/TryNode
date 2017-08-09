@@ -10,6 +10,7 @@ function start(route, handle) {
 		var path_name = url.parse(request_url).pathname;
 		console.log("Request for " + path_name + " received");
 		route(path_name, handle);
+		console.log("");
 
 		response.writeHead(200, { "Content-Type": "text/plain" });
 		response.write("Hello, world! This is my first page using Node.js HTTP server.");
