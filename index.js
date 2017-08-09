@@ -1,4 +1,4 @@
 // Require our own defined 'server' module.
-var server = require('server');
+var server = require('./server');
 
 server.start();
