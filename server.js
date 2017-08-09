@@ -1,8 +1,9 @@
-var http = require('http');
+var http = request('http');
 
-http.createServer(function (request, response) {
-	response.writeHead(200, { 'Content-Type': 'text/plain' });
-	response.end("Hello, world! This is my first web application with Node.js!");
-}).listen(4000);
+http.createServer(function(request, response) {
+	response.writeHead(200, { "Content-Type": "text/plain" });
+	response.write("Hello, world! This is my first page using Node.js HTTP server");
+	response.end();
+}).listen(8888);
 
-console.log('The server is running at http://localhost:4000/');
+console.log("The server is running now. You can acceess it from http://localhost:8888/.");
