@@ -1,6 +1,12 @@
+var process = require("child_process");
+
 function start(response) {
 	console.log("Request handler 'start' has been enabled.");
 	response.write("Request handler 'start' has been enabled.");
+
+	process.exec("ls -lah", function(err, stdout, stderr) {
+		response.write(stdout);
+	});
 }
 
 function upload(response) {
