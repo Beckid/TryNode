@@ -5,7 +5,7 @@ function start(response) {
 
 function upload(response) {
 	console.log("Request handler 'upload' has been enabled.");
-	response.write("Request handler 'start' has been enabled.");
+	response.write("Request handler 'upload' has been enabled.");
 }
 
 exports.start = start;
