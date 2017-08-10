@@ -3,8 +3,6 @@ function route(path_name, handle, response) {
 
 	if (typeof handle[path_name] === 'function') {
 		response.writeHead(200, { "Content-Type": "text/plain" });
-		response.write("Hello, world! This is my first page using Node.js HTTP server.\n");
-
 		handle[path_name](response);
 	} else {
 		console.log('No handler available for the requested path name.');
