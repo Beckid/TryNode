@@ -6,9 +6,10 @@ function start(response) {
 
 	process.exec("ls -lah", function(err, stdout, stderr) {
 		response.write(stdout);
-	});
-
-	response.end();
+		
+		// Has to put this inside because this is a callback function.
+		response.end();
+	});	
 }
 
 function upload(response) {
