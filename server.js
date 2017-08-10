@@ -9,12 +9,9 @@ function start(route, handle) {
 		var request_url = request.url;
 		var path_name = url.parse(request_url).pathname;
 		console.log("Request for " + path_name + " received");
-		route(path_name, handle);
+		
+		route(path_name, handle, response);
 		console.log("");
-
-		response.writeHead(200, { "Content-Type": "text/plain" });
-		response.write("Hello, world! This is my first page using Node.js HTTP server.");
-		response.end();
 	});
 
 	// Can be accessed from localhost:8888
