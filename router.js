@@ -2,7 +2,6 @@ function route(path_name, handle, response) {
 	console.log('About to route for a request to ' + path_name);
 
 	if (typeof handle[path_name] === 'function') {
-		response.writeHead(200, { "Content-Type": "text/plain" });
 		handle[path_name](response);
 	} else {
 		console.log('No handler available for the requested path name.');

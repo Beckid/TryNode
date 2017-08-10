@@ -3,7 +3,6 @@ var process = require("child_process");
 function start(response) {
 	console.log("Request handler 'start' has been enabled.");
 
-
 	var body = '<html>'+
     '<head>'+
     '<meta http-equiv="Content-Type" content="text/html; '+
@@ -18,18 +17,25 @@ function start(response) {
     '</html>';
 	
 	response.write(body);
-	response.end();
+	response.end();	
+}
 
-	// process.exec("ls -lah", function(err, stdout, stderr) {
-	// 	response.write(stdout);
+function file(response) {
+	console.log("Request handler 'start' has been enabled.");
+	response.writeHead(200, { "Content-Type": "text/plain" });
 
-	// 	// Has to put this inside because this is a callback function.
-	// 	response.end();
-	// });	
+	process.exec("ls -lah", function(err, stdout, stderr) {
+		response.write(stdout);
+
+		// Has to put this inside because this is a callback function.
+		response.end();
+	});
 }
 
 function upload(response) {
 	console.log("Request handler 'upload' has been enabled.");
+	response.writeHead(200, { "Content-Type": "text/plain" });
+	
 	response.write("Request handler 'upload' has been enabled.");
 	response.end();
 }
