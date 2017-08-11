@@ -47,7 +47,7 @@ function upload(response, data) {
 function show(response, data) {
 	console.log("Request handler 'show' has been enabled.");
 
-	fs.readFile("/tmp/test.png", "binary", function(err, file) {
+	fs.readFile("./tmp/test.png", "binary", function(err, file) {
 		if (err) {
 			response.writeHead(500, { "Content-Type": "text/plain" });
 			response.write("We have encountered an error: " + err + "\n");
