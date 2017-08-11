@@ -1,5 +1,6 @@
 var process = require("child_process");
 var queryStr = require("querystring");
+var fs = require("fs");
 
 function start(response, data) {
 	console.log("Request handler 'start' has been enabled.");
@@ -43,5 +44,22 @@ function upload(response, data) {
 	response.end();
 }
 
+function show(response, data) {
+	console.log("Request handler 'show' has been enabled.");
+
+	fs.readFile("/tmp/test.png", "binary", function(err, file) {
+		if (err) {
+			response.writeHead(500, { "Content-Type": "text/plain" });
+			response.write("We have encountered an error: " + err + "\n");
+			response.end();
+		} else {
+			response.writeHead(200, { "Content-Type": "image/png" });
+			response.write(file, "binary");
+			response.end();
+		}
+	});
+}
+
 exports.start = start;
 exports.upload = upload;
+exports.show = show;
