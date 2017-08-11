@@ -6,7 +6,8 @@ var url = require('url');
 function start(route, handle) {
 	// Create an HTTP server.
 	var server = http.createServer(function(request, response) {
-		console.log("Request for " + url.parse(request.url).pathname + " received");
+		var path_name = url.parse(request.url).pathname;
+		console.log("Request for " + path_name + " received");
 
 		var postData = "";
 		request.setEncoding("utf8");
