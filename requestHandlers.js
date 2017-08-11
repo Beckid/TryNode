@@ -34,7 +34,7 @@ function file(response, data) {
 }
 
 function upload(response, data) {
-	console.log("Request handler 'upload' has been enabled.");
+	console.log("Request handler 'upload' has been enabled.\n");
 	response.writeHead(200, { "Content-Type": "text/plain" });
 
 	response.write("Request handler 'upload' has been enabled.");
