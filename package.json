@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Yunpeng's first attempt on building a web application with node.js",
   "main": "server.js",
-  "dependencies": {},
+  "dependencies": {
+    "formidable": "^1.1.1"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "make test",
