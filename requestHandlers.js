@@ -1,8 +1,9 @@
 var process = require("child_process");
 var queryStr = require("querystring");
 var fs = require("fs");
+var formidable = require("formidable");
 
-function start(response, data) {
+function start(request, response) {
 	console.log("Request handler 'start' has been enabled.");
 
 	var body = '<html>'+
@@ -24,7 +25,7 @@ function start(response, data) {
 	response.end();	
 }
 
-function file(response, data) {
+function file(request, response) {
 	console.log("Request handler 'start' has been enabled.");
 	response.writeHead(200, { "Content-Type": "text/plain" });
 
@@ -36,16 +37,22 @@ function file(response, data) {
 	});
 }
 
-function upload(response, data) {
+function upload(request, response) {
 	console.log("Request handler 'upload' has been enabled.");
-	response.writeHead(200, { "Content-Type": "text/plain" });
 
-	response.write("Request handler 'upload' has been enabled.\n\n");
-	response.write("You have just entered: " + queryStr.parse(data).text);
-	response.end();
+	var form = new formidable.IncomingForm();
+	console.log("About to parse the form.");
+	form.parse(request, function(err, fields, files) {
+		console.log("Parse finished.");
+		fs.renameSync(files.upload.path, "./tmp/test.png");
+		response.writeHead(200, { "Content-Type": "text/html" });
+		response.write("Received image: <br>");
+		response.write("<img src='/show' />");
+		response.end();
+	});
 }
 
-function show(response, data) {
+function show(request, response) {
 	console.log("Request handler 'show' has been enabled.");
 
 	fs.readFile("./tmp/test.png", "binary", function(err, file) {
