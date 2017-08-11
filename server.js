@@ -8,21 +8,21 @@ function start(route, handle) {
 	var server = http.createServer(function(request, response) {
 		var path_name = url.parse(request.url).pathname;
 		console.log("Request for " + path_name + " received");
-
-		var postData = "";
-		request.setEncoding("utf8");
-
-		request.addListener("data", function(chunk) {
-			postData += chunk;
-			console.log("Received POST data " + chunk + ".\n");
-		});
-
-		request.addListener("end", function() {
-			route(path_name, handle, response, postData);
-
-		});
-
+		route(path_name, handle, request, response);
 		console.log("");
+
+		// This part has been depreciated.
+		// var postData = "";
+		// request.setEncoding("utf8");
+
+		// request.addListener("data", function(chunk) {
+		// 	postData += chunk;
+		// 	console.log("Received POST data " + chunk + ".\n");
+		// });
+
+		// request.addListener("end", function() {
+		// 	route(path_name, handle, response, postData);
+		// });		
 	});
 
 	// Can be accessed from localhost:8888
