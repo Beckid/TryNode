@@ -1,6 +1,6 @@
 var process = require("child_process");
 
-function start(response) {
+function start(response, data) {
 	console.log("Request handler 'start' has been enabled.");
 
 	var body = '<html>'+
@@ -21,7 +21,7 @@ function start(response) {
 	response.end();	
 }
 
-function file(response) {
+function file(response, data) {
 	console.log("Request handler 'start' has been enabled.");
 	response.writeHead(200, { "Content-Type": "text/plain" });
 
@@ -33,11 +33,12 @@ function file(response) {
 	});
 }
 
-function upload(response) {
+function upload(response, data) {
 	console.log("Request handler 'upload' has been enabled.");
 	response.writeHead(200, { "Content-Type": "text/plain" });
 
 	response.write("Request handler 'upload' has been enabled.");
+	response.write("You have just entered: " + data);
 	response.end();
 }
 
