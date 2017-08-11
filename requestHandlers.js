@@ -1,4 +1,5 @@
 var process = require("child_process");
+var queryStr = require("querystring");
 
 function start(response, data) {
 	console.log("Request handler 'start' has been enabled.");
@@ -34,11 +35,11 @@ function file(response, data) {
 }
 
 function upload(response, data) {
-	console.log("Request handler 'upload' has been enabled.\n");
+	console.log("Request handler 'upload' has been enabled.\n\n");
 	response.writeHead(200, { "Content-Type": "text/plain" });
 
 	response.write("Request handler 'upload' has been enabled.");
-	response.write("You have just entered: " + data);
+	response.write("You have just entered: " + queryStr.parse(data).text);
 	response.end();
 }
 
